@@ -1,0 +1,19 @@
+package: github.com/koshatul/registry-cli
+import:
+- package: github.com/docker/distribution
+  version: master
+  subpackages:
+  - manifest/schema1
+  - manifest/schema2
+- package: github.com/opencontainers/go-digest
+  version: ~1.0.0-rc1
+- package: github.com/sirupsen/logrus
+  version: ~1.0.5
+- package: github.com/spf13/cobra
+  version: ~0.0.3
+- package: github.com/spf13/viper
+  version: ~1.0.2
+- package: go.uber.org/zap
+  version: ~1.8.0
+- package: gopkg.in/resty.v1
+  version: ~1.6.0
