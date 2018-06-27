@@ -1,5 +1,5 @@
-hash: f1f01a607ea8a7e5abb28be7811ce410281d530621b46f0851ded13b27d6e0b1
-updated: 2018-06-27T11:03:59.434476+10:00
+hash: 753435550a516eeb0cc5533928af3a392d91b9edb5501e5597ef698b5027fe8c
+updated: 2018-06-27T14:01:44.479919+10:00
 imports:
 - name: github.com/docker/distribution
   version: 749f6afb4572201e3c37325d0ffedb6f32be8950
@@ -35,6 +35,8 @@ imports:
   version: 279bed98673dd5bef374d3b6e4b09e2af76183bf
 - name: github.com/pelletier/go-toml
   version: c01d1270ff3e442a8a57cddc1c92dc1138598194
+- name: github.com/peterhellberg/link
+  version: 6d32b8d78d1e440948a1c461c5abcc6bf7881641
 - name: github.com/sirupsen/logrus
   version: c155da19408a8799da419ed3eeb0cb5db0ad5dbc
 - name: github.com/spf13/afero

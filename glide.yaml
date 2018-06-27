@@ -17,3 +17,4 @@ import:
   version: ~1.8.0
 - package: gopkg.in/resty.v1
   version: ~1.6.0
+- package: github.com/peterhellberg/link

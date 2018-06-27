@@ -1,6 +1,10 @@
 package registry
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/peterhellberg/link"
+)
 
 type tagsResponse struct {
 	Tags []string `json:"tags"`
@@ -8,24 +12,21 @@ type tagsResponse struct {
 
 func (r *Registry) ListTags(repository string) ([]string, error) {
 	tags := []string{}
-	link := fmt.Sprintf("/v2/%s/tags/list", repository)
+	url := fmt.Sprintf("/v2/%s/tags/list", repository)
 	for {
 		resp, err := r.client.R().
 			SetResult(tagsResponse{}).
-			Get(link)
+			Get(url)
 		if err != nil {
 			return []string{}, err
 		}
-		link, err = getNextLink(resp)
-		switch err {
-		case ErrNoMorePages:
+		linkHdr := link.ParseHeader(resp.Header())
+		if val, ok := linkHdr["next"]; ok {
+			tags = append(tags, resp.Result().(*tagsResponse).Tags...)
+			url = val.URI
+		} else {
 			tags = append(tags, resp.Result().(*tagsResponse).Tags...)
 			return tags, nil
-		case nil:
-			tags = append(tags, resp.Result().(*tagsResponse).Tags...)
-			continue
-		default:
-			return nil, err
 		}
 	}
 }
